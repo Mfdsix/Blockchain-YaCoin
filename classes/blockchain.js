@@ -18,7 +18,7 @@ class BlockChain{
             )
         )
 
-        console.log("chain initialized")
+        console.log("Chain initialized")
     }
 
     latestChain(){
@@ -41,6 +41,12 @@ class BlockChain{
         )
 
         console.log("Added successfully")
+    }
+
+    addRandom(length = 5){
+        for(let i = 1; i <= length; i++){
+            this.addChain();
+        }
     }
 }
 

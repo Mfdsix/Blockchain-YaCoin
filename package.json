@@ -1,0 +1,31 @@
+{
+  "name": "yacoin",
+  "version": "1.0.0",
+  "description": "yacoin is implementation of blockchain",
+  "main": "main.js",
+  "dependencies": {
+    "faker": "^5.4.0",
+    "crypto-js": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mfdsix/Blockchain-YaCoin.git"
+  },
+  "keywords": [
+    "blockchain",
+    "yacoin",
+    "mfdsix",
+    "block"
+  ],
+  "author": "mfdsix",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mfdsix/Blockchain-YaCoin/issues"
+  },
+  "homepage": "https://github.com/Mfdsix/Blockchain-YaCoin#readme"
+}
