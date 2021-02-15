@@ -2,9 +2,10 @@ const Block = require("./block")
 const Faker = require("faker")
 
 class BlockChain{
-    constructor(){
+    constructor(difficulty = 2){
         this.chains = [];
         this.initialChain();
+		this.difficulty = difficulty
     }
 
     initialChain(){
@@ -25,19 +26,19 @@ class BlockChain{
     }
 
     addChain(from, to, nominal){
-        let latest = this.latestChain();
+        let latest = this.latestChain()
+		let newBlock = new Block(
+			new Date(),
+			{
+				from: from,
+				to: to,
+				nominal: nominal
+			},
+			latest.hash
+		)
+		newBlock.mine(this.difficulty)
 
-        this.chains.push(
-            new Block(
-                new Date(),
-                {
-                    from: from,
-                    to: to,
-                    nominal: nominal
-                },
-                latest.hash
-            )
-        )
+        this.chains.push(newBlock)
     }
 
     addRandom(length = 5){
