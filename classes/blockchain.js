@@ -1,4 +1,5 @@
 const Block = require("./block")
+const Faker = require("faker")
 
 class BlockChain{
     constructor(){
@@ -45,7 +46,11 @@ class BlockChain{
 
     addRandom(length = 5){
         for(let i = 1; i <= length; i++){
-            this.addChain();
+            this.addChain(
+                Faker.name.findName(),
+                Faker.company.companyName(),
+                Faker.random.number(123456789)
+            );
         }
     }
 }

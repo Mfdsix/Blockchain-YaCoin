@@ -6,4 +6,5 @@ YaCoin.addChain(
     'donation project',
     10000
 )
+YaCoin.addRandom(100)
 console.log(JSON.stringify(YaCoin, null, 4))
