@@ -2,54 +2,33 @@ const Block = require("./block")
 const Faker = require("faker")
 
 class BlockChain{
-    constructor(difficulty = 2){
-        this.chains = [];
-        this.initialChain();
+    constructor(difficulty = 2, reward = 100){
+        this.chains = []
 		this.difficulty = difficulty
+		this.reward = reward
+		this.initBlock()
     }
 
-    initialChain(){
-        this.chains.push(
-            new Block(
-                new Date(),
-                {
-                    from: 'mfdsix',
-                    to: 'donation project',
-                    nominal: 5000
-                },
-            )
-        )
-    }
+	initBlock(){
+		this.chains.push(new Block())
+	}
 
     latestChain(){
         return this.chains[this.chains.length - 1]
     }
 
-    addChain(from, to, nominal){
-        let latest = this.latestChain()
-		let newBlock = new Block(
-			new Date(),
-			{
-				from: from,
-				to: to,
-				nominal: nominal
-			},
-			latest.hash
-		)
-		newBlock.mine(this.difficulty)
+	createBlock(){
+		let lastBlock = this.latestChain()
+		let block = new Block(lastBlock.hash)
 
-        this.chains.push(newBlock)
-    }
+		this.chains.push(block)
+	}
 
-    addRandom(length = 5){
-        for(let i = 1; i <= length; i++){
-            this.addChain(
-                Faker.name.findName(),
-                Faker.company.companyName(),
-                Faker.random.number(123456789)
-            );
-        }
-    }
+	mine(wallet){
+		let lastBlock = this.latestChain()
+		let mined = lastBlock.mine(this.difficulty, wallet, this.reward)
+		return mined
+	}
 
     checkValidity(){
         for(let i = 1; i < this.chains.length; i++){
