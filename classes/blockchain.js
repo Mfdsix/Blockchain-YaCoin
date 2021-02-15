@@ -18,8 +18,6 @@ class BlockChain{
                 },
             )
         )
-
-        console.log("Chain initialized")
     }
 
     latestChain(){
@@ -40,8 +38,6 @@ class BlockChain{
                 latest.hash
             )
         )
-
-        console.log("Added successfully")
     }
 
     addRandom(length = 5){
@@ -51,6 +47,22 @@ class BlockChain{
                 Faker.company.companyName(),
                 Faker.random.number(123456789)
             );
+        }
+    }
+
+    checkValidity(){
+        for(let i = 1; i < this.chains.length; i++){
+            const current = this.chains[i]
+            const previous = this.chains[i-1]
+
+            if(current.hash !== current.generateHash()){
+                return false
+            }
+            if(current.previousHash !== previous.hash){
+                return false
+            }
+
+            return true
         }
     }
 }

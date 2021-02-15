@@ -7,7 +7,7 @@
 >> npm install
 
 - run project
->> node main.js
+>> node main.js // npm run run
 
 #### Reference
 

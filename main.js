@@ -7,4 +7,5 @@ YaCoin.addChain(
     10000
 )
 YaCoin.addRandom(100)
-console.log(JSON.stringify(YaCoin, null, 4))
+
+console.log("Check chains validity : " + (YaCoin.checkValidity() ? "valid" : "not valid"))
