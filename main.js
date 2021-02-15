@@ -13,11 +13,19 @@ YaCoin.addChain(
 YaCoin.addRandom(100)
 
 // check all chains validity
-console.log("Check chains validity : " + (YaCoin.checkValidity() ? "valid" : "not valid"))
+console.log("✔ Check chains validity : " + (YaCoin.checkValidity() ? "valid" : "not valid"))
 
 // tryna simulate when hacker change the value
-YaCoin.chains[1].data.from = "changed by hacker";
-console.log("block indexed 1 is changed");
+const chainToHack = YaCoin.chains[1]
+chainToHack.data.from = "changed by hacker";
+console.log("😐 block indexed 1 is changed");
 
 // recheck validity of changed chains
-console.log("Check chains validity : " + (YaCoin.checkValidity() ? "valid" : "not valid"))
+console.log("✔ Check chains validity : " + (YaCoin.checkValidity() ? "valid" : "not valid"))
+
+// tryna be more clever hacker
+chainToHack.hash = chainToHack.generateHash()
+console.log("😐 hash of block indexed 1 is recreated");
+
+// recheck validity of changed chains
+console.log("✔ Check chains validity : " + (YaCoin.checkValidity() ? "valid" : "not valid"))
